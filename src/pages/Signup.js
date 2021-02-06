@@ -1,11 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 function Signup() {
   return (
     <div>
       <img src="" alt="Logo" />
       <form>
+        <input
+          name="name"
+          type="text"
+          placeholder="Nome"
+        />
         <input
           name="email"
           type="email"
@@ -16,14 +20,20 @@ function Signup() {
           type="password"
           placeholder="Senha"
         />
-        <Link to="/cadastro">
-          Não possui cadastro? Clique aqui
-        </Link>
+        <input
+          name="repeat-password"
+          type="password"
+          placeholder="Repetir senha"
+        />
+        <select>
+          <option>Selecione</option>
+          <option>Quero ser mentorada</option>
+          <option>Quero ser mentora</option>
+        </select>
         <button
           type="button"
-          disabled={ disabled }
         >
-          Entrar
+          Cadastrar
         </button>
       </form>
     </div>
