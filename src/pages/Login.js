@@ -2,16 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { AppContext } from '../contexts/Provider';
 import Header from '../components/Header';
-
-const MIN_PASSWORD_LENGTH = 6;
-
-function emailIsValid(email) {
-  return /\S+@\S+\.\S+/.test(email);
-}
-
-function passwordIsValid(password) {
-  return password.length >= MIN_PASSWORD_LENGTH;
-}
+import { emailIsValid, passwordIsValid } from '../utils/functions/formChecks';
 
 function Login() {
   const { email, password, setEmail, setPassword, setOption } = useContext(AppContext);
@@ -20,7 +11,7 @@ function Login() {
 
   useEffect(() => {
     setOption('HOME');
-  }, [])
+  }, []);
 
   useEffect(() => {
     const inputValidation = () => {
@@ -49,7 +40,7 @@ function Login() {
       <Header />
       <form>
         <label htmlFor="email">
-          E-mail
+          Insira o seu e-mail
           <input
             id="email"
             name="email"
@@ -59,11 +50,11 @@ function Login() {
           />
         </label>
         <label htmlFor="password">
+          Insira a sua senha
           <input
             id="password"
             name="password"
             type="password"
-            placeholder="Senha"
             value={ password }
             onChange={ ({ target }) => setPassword(target.value) }
           />

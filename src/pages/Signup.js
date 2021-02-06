@@ -1,16 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { AppContext } from '../contexts/Provider';
-
-const MIN_PASSWORD_LENGTH = 6;
-
-function emailIsValid(email) {
-  return /\S+@\S+\.\S+/.test(email);
-}
-
-function passwordIsValid(password) {
-  return password.length >= MIN_PASSWORD_LENGTH;
-}
+import { emailIsValid, passwordIsValid } from '../utils/functions/formChecks';
 
 function Signup() {
   const {

@@ -1,8 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import { AppContext } from '../contexts/Provider';
 
 function Header() {
   const { option } = useContext(AppContext);
+  const history = useHistory();
 
   const handleClick = () => {
     if (option === 'LOGIN') {
@@ -10,12 +12,12 @@ function Header() {
     } else {
       history.push('/home');
     }
-  }
+  };
 
-  return(
+  return (
     <div>
       <img src="" alt="Logo" />
-      <button onClick={handleClick}>
+      <button type="button" onClick={ handleClick }>
         {option}
       </button>
     </div>

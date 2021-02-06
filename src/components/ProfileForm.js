@@ -63,7 +63,7 @@ function ProfileForm() {
           <textarea
             id="about-you"
             name="about-you"
-            maxlength="2500"
+            maxLength="2500"
           />
         </label>
         <label htmlFor="interest">
@@ -71,8 +71,9 @@ function ProfileForm() {
           <textarea
             id="interest"
             name="interest"
-            maxlength="1000"
-          />1000
+            maxLength="1000"
+          />
+          1000
         </label>
         <button
           type="button"
