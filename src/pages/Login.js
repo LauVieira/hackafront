@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { AppContext } from '../contexts/Provider';
+import Header from '../components/Header';
 
 const MIN_PASSWORD_LENGTH = 6;
 
@@ -13,9 +14,13 @@ function passwordIsValid(password) {
 }
 
 function Login() {
-  const { email, password, setEmail, setPassword } = useContext(AppContext);
-  const [isDisabled, setIsDisabled] = useState('true');
+  const { email, password, setEmail, setPassword, setOption } = useContext(AppContext);
+  const [isDisabled, setIsDisabled] = useState(true);
   const history = useHistory();
+
+  useEffect(() => {
+    setOption('HOME');
+  }, [])
 
   useEffect(() => {
     const inputValidation = () => {
@@ -23,9 +28,9 @@ function Login() {
       const passwordValidation = passwordIsValid(password);
 
       if (emailValidation && passwordValidation) {
-        setIsDisabled('false');
+        setIsDisabled(false);
       } else {
-        setIsDisabled('true');
+        setIsDisabled(true);
       }
     };
     inputValidation();
@@ -41,7 +46,7 @@ function Login() {
 
   return (
     <div>
-      <img src="" alt="Logo" />
+      <Header />
       <form>
         <label htmlFor="email">
           E-mail
