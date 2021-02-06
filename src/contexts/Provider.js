@@ -1,19 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Context from './Context';
+import AppContext from './AppContext';
 
-const Provider = ({ children }) => {
+const AppProvider = ({ children }) => {
   const context = {};
 
   return (
-    <Context.Provider value={ context }>
+    <AppContext.Provider value={ context }>
       {children}
-    </Context.Provider>
+    </AppContext.Provider>
   );
 };
 
-export default Provider;
+export { AppContext, AppProvider as Provider };
 
-Provider.propTypes = {
+AppProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
