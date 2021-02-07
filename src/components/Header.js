@@ -17,7 +17,7 @@ function Header() {
 
   return (
     <StyledHeader>
-      <img src="" alt="Logo" />
+      <img src="public/images/egregora-logo.png" alt="Logo" />
       <button type="button" onClick={ handleClick }>
         {option}
       </button>
