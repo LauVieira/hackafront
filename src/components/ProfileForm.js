@@ -7,28 +7,21 @@ import {
   PhotoSection,
   Button,
   Form,
-  Final } from './style/Profile';
+  Final,
+} from './style/Profile';
 
 function ProfileForm() {
-  const {
-    name,
-    setName,
-    setCareer,
-    setLevel,
-    setWebsite,
-    setContactEmail,
-    setLinkedin,
-    setDescription,
-    setTopics,
-    contactEmail,
-    career,
-    level,
-    description,
-    topics,
-    role,
-    photo,
-    setPhoto,
-  } = useContext(AppContext);
+  const { user, header } = useContext(AppContext);
+  const { name, role } = user;
+  const [title, setTitle] = useState('');
+  const [level, setLevel] = useState('');
+  const [website, setWebsite] = useState('');
+  const [contactEmail, setContactEmail] = useState('');
+  const [linkedin, setLinkedin] = useState('');
+  const [description, setDescription] = useState('');
+  const [topics, setTopics] = useState('');
+  const [photo, setPhoto] = useState('');
+
   const [isDisabled, setIsDisabled] = useState(true);
   const [message, setMessage] = useState('');
   const [isHidden, setIsHidden] = useState(true);
@@ -117,7 +110,7 @@ function ProfileForm() {
               <p>Área de atuação*</p>
               <select
                 id="career-field"
-                onChange={ ({ target }) => setCareer(target.value) }
+                onChange={ ({ target }) => setTitle(target.value) }
               >
                 <option>Selecione</option>
                 <option>Dev Front</option>
@@ -142,9 +135,9 @@ function ProfileForm() {
                 value={ level }
               >
                 <option>Selecione</option>
-                <option>Júnior</option>
-                <option>Pleno</option>
-                <option>Sênior</option>
+                <option value="Júnior">Júnior</option>
+                <option value="Pleno">Pleno</option>
+                <option value="Sênior">Sênior</option>
               </select>
             </label>
             <label htmlFor="web-link">

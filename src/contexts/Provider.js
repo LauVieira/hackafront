@@ -14,7 +14,6 @@ const AppProvider = ({ children }) => {
     setOption,
     user,
     setUser,
-    token,
     setToken,
     header,
   };

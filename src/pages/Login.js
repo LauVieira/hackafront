@@ -39,10 +39,9 @@ function Login() {
     setToken(responseData.token);
 
     const { profileFilled } = responseData.user;
-    const pushToProfile = Object.keys(profileFilled).length === 0;
+    if (!(profileFilled.length)) history.push('/home');
 
-    if (pushToProfile) history.push('/perfil');
-    history.push('/home')
+    history.push('/perfil');
   }
 
   function submitFailed(error) {
