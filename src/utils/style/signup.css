@@ -1,11 +1,9 @@
 .main {
   background-color: #A67777;
-  height: 100vh;
 }
 
 .secondary {
   align-items: center;
-  background-color: #A67777;
   display: flex;
   justify-content: space-around;
   width: 100%;
@@ -21,18 +19,18 @@
   width: 100%;
 }
 
-.signup-section{
+.role-check {
+  justify-content: center;
   color: #FFFFFF;
+  width: 30%;
   display: flex;
   flex-direction: column;
-  width: 50%;
 }
 
 .btn-container {
-  align-items: flex-end;
   display: flex;
-  flex-direction: column;
-  margin-top: 15%;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .button {
@@ -53,15 +51,4 @@
   color: #FFFFFF;
   display: flex;
   flex-direction: column;
-  width: 30%;
-}
-
-.greeting {
-  color: #F2BDC1;
-  font-size: 1.2em;
-}
-
-.end-text {
-  align-self: flex-end;
-  margin-right: 10%;
 }

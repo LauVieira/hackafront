@@ -107,19 +107,24 @@ function Signup() {
             Cadastrar
           </button>
         </form>
-        <div>
-          <button
-            type="button"
-            onClick={ ({ target }) => setRole(target.value) }
-          >
-            Quero ser mentorada
-          </button>
-          <button
-            type="button"
-            onClick={ ({ target }) => setRole(target.value) }
-          >
-            Quero ser mentora
-          </button>
+        <div className="role-check">
+          <p>Você é:</p>
+          <div className="btn-container">
+            <button
+              className="btn btn-light"
+              type="button"
+              onClick={ ({ target }) => setRole(target.innerText) }
+            >
+              Mentora
+            </button>
+            <button
+              className="btn btn-light"
+              type="button"
+              onClick={ ({ target }) => setRole(target.innerText) }
+            >
+              Mentorada
+            </button>
+          </div>
         </div>
       </div>
     </div>
