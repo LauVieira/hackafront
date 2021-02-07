@@ -27,17 +27,31 @@ function Login() {
     inputValidation();
   }, [email, password]);
 
-  const handleClick = () => {
+  const handleSubmit = () => {
     // validar o email cadastrado no banco de dados e retornar mensagem de
     // usuário inválido se não houver
     // se houver, pegar o id do usuário e checar se já tem perfil preenchido
     // se já tiver, o history.push vai pra home
-    history.push('./perfil');
+    history.push('/perfil');
   };
 
   return (
     <div>
       <Header />
+      <section>
+        <h3>Você é nova por aqui?</h3>
+        <p>Sei que você está ansiosa para encontrar 
+          a sua mentora mas é necessário realizar um 
+          pequeno cadastro antes de você ter acesso a
+          base de mentoras cadastradas.</p>
+        <p>Vamos lá?</p>
+        <button
+          type="button"
+          onClick={ () => history.push('/cadastro') }
+        >
+          Cadastro
+        </button>
+      </section>
       <form>
         <label htmlFor="email">
           Insira o seu e-mail
@@ -63,9 +77,9 @@ function Login() {
           Não possui cadastro? Clique aqui!
         </Link>
         <button
-          disabled={ !isDisabled }
+          disabled={ isDisabled }
           type="button"
-          onClick={ handleClick }
+          onClick={ handleSubmit }
         >
           Entrar
         </button>
