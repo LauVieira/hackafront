@@ -203,6 +203,7 @@ const Form = styled.form`
   width: 40vw;
 
   input {
+    color: black;
     background-color: #FFFFFF;
     padding: 10px;
     margin: 5px 0 20px 0;
