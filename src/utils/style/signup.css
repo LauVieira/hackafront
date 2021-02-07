@@ -28,7 +28,7 @@
 }
 
 .btn-container {
-  display: flex;
+  justify-self: flex-start;
   flex-direction: row;
   justify-content: space-around;
 }

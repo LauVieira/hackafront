@@ -108,7 +108,9 @@ function Signup() {
           </button>
         </form>
         <div className="role-check">
-          <p>Você é:</p>
+          <div>
+            <p>Você é:</p>
+          </div>
           <div className="btn-container">
             <button
               className="btn btn-light"
