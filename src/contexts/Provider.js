@@ -8,6 +8,13 @@ const AppProvider = ({ children }) => {
   const [name, setName] = useState('');
   const [role, setRole] = useState('');
   const [option, setOption] = useState('');
+  const [career, setCareer] = useState('');
+  const [level, setLevel] = useState('');
+  const [website, setWebsite] = useState('');
+  const [contactEmail, setContactEmail] = useState('');
+  const [linkedin, setLinkedin] = useState('');
+  const [description, setDescription] = useState('');
+  const [topics, setTopics] = useState('');
 
   const context = {
     name,
@@ -20,6 +27,20 @@ const AppProvider = ({ children }) => {
     setPassword,
     option,
     setOption,
+    career,
+    setCareer,
+    level,
+    setLevel,
+    website,
+    setWebsite,
+    contactEmail,
+    setContactEmail,
+    linkedin,
+    setLinkedin,
+    description,
+    setDescription,
+    topics,
+    setTopics,
   };
 
   return (
