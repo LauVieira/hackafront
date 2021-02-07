@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { AppContext } from '../contexts/Provider';
 import Header from '../components/Header';
 import { emailIsValid, passwordIsValid } from '../utils/functions/formChecks';
+import '../utils/style/profile.css';
 
 function Login() {
   const { email, password, setEmail, setPassword, setOption } = useContext(AppContext);
@@ -36,40 +37,49 @@ function Login() {
   };
 
   return (
-    <div>
+    <div className="main">
       <Header />
-      <form>
-        <label htmlFor="email">
-          Insira o seu e-mail
-          <input
-            id="email"
-            name="email"
-            type="email"
-            value={ email }
-            onChange={ ({ target }) => setEmail(target.value) }
-          />
-        </label>
-        <label htmlFor="password">
-          Insira a sua senha
-          <input
-            id="password"
-            name="password"
-            type="password"
-            value={ password }
-            onChange={ ({ target }) => setPassword(target.value) }
-          />
-        </label>
-        <Link to="/cadastro">
-          Não possui cadastro? Clique aqui!
-        </Link>
-        <button
-          disabled={ !isDisabled }
-          type="button"
-          onClick={ handleClick }
-        >
-          Entrar
-        </button>
-      </form>
+      <div className="secondary">
+        <div>
+          <Link className="signup-link" to="/cadastro">
+            Não possui cadastro? Clique aqui!
+          </Link>
+        </div>
+        <form className="mb-3 form">
+          <label htmlFor="email" className="form-label">
+            Insira o seu e-mail
+            <input
+              className="form-control"
+              id="email"
+              name="email"
+              type="email"
+              value={ email }
+              onChange={ ({ target }) => setEmail(target.value) }
+            />
+          </label>
+          <label htmlFor="password" className="form-label">
+            Insira a sua senha
+            <input
+              className="form-control"
+              id="password"
+              name="password"
+              type="password"
+              value={ password }
+              onChange={ ({ target }) => setPassword(target.value) }
+            />
+          </label>
+          <div className="btn-container">
+            <button
+              className="button"
+              disabled={ isDisabled }
+              type="button"
+              onClick={ handleClick }
+            >
+              Entrar
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

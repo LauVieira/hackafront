@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { AppContext } from '../contexts/Provider';
+import '../utils/style/profile.css';
 
 function Header() {
   const { option } = useContext(AppContext);
@@ -15,12 +16,12 @@ function Header() {
   };
 
   return (
-    <div>
+    <header className="header">
       <img src="" alt="Logo" />
       <button type="button" onClick={ handleClick }>
         {option}
       </button>
-    </div>
+    </header>
   );
 }
 
