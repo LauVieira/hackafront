@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { AppContext } from '../contexts/Provider';
 import Header from '../components/Header';
 import { data } from '../utils/data';
+import { Main, CardContainer } from '../components/style/Members';
 
 function Members() {
   const { users, setUsers, setOption } = useContext(AppContext);
@@ -41,14 +42,24 @@ function Members() {
   return (
     <div>
       <Header />
-      <h2>Mentoras:</h2>
-      {users.filter((user) => user.role === 'mentor').map((user, index) => (
-        rendersCards(user, index)
-      ))}
-      <h2>Mentorandas:</h2>
-      {users.filter((user) => user.role === 'mentored').map((user, index) => (
-        rendersCards(user, index)
-      ))}
+      <Main>
+        <div>
+          <h2>Mentoras:</h2>
+          <CardContainer>
+            {users.filter((user) => user.role === 'mentor').map((user, index) => (
+              rendersCards(user, index)
+            ))}
+          </CardContainer>
+        </div>
+        <div>
+          <h2>Mentorandas:</h2>
+          <CardContainer>
+            {users.filter((user) => user.role === 'mentored').map((user, index) => (
+              rendersCards(user, index)
+            ))}
+          </CardContainer>
+        </div>
+      </Main>
     </div>
   );
 }
