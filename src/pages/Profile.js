@@ -4,7 +4,7 @@ import ProfileForm from '../components/ProfileForm';
 function Profile() {
   return (
     <div>
-      <img src={ `${process.env.PUBLIC_URL}/images/egregora-logo.png` } alt="Logo" />
+      <img src="/images/egregora-logo.png" alt="Logo" />
       <header>
         <h1>
           Preencha seu perfil para começar!
