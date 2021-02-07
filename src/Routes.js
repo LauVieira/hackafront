@@ -6,16 +6,18 @@ import {
   Profile,
   Home,
   Categories,
+  Members,
 } from './import';
 
 function Routes() {
   return (
     <Switch>
       <Route exact path="/" component={ Login } />
-      <Route exact path="/cadastro" component={ Signup } />
+      <Route path="/cadastro" component={ Signup } />
       <Route exact path="/perfil" component={ Profile } />
-      <Route exact path="/home" component={ Home } />
-      <Route exact path="/categorias" component={ Categories } />
+      <Route path="/home" component={ Home } />
+      <Route path="/categorias" component={ Categories } />
+      <Route path="/membros/:id" component={ Members } />
     </Switch>
   );
 }
