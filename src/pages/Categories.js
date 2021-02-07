@@ -5,7 +5,6 @@ import CategoryButtons from '../components/CategoryButtons';
 import { Main } from '../components/style/Categories';
 
 function Categories() {
-
   const { setOption } = useContext(AppContext);
 
   useEffect(() => {
