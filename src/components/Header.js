@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { AppContext } from '../contexts/Provider';
+import '../utils/style/profile.css';
 
 function Header() {
   const { option } = useContext(AppContext);

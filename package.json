@@ -20,6 +20,7 @@
     "@babel/preset-env": "^7.12.13",
     "@babel/preset-react": "^7.12.13",
     "axios": "^0.21.1",
+    "bootstrap": "^5.0.0-beta1",
     "eslint-config-airbnb": "^18.2.1",
     "react": "^17.0.1",
     "react-debounce-input": "^3.2.3",
