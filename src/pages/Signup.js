@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { AppContext } from '../contexts/Provider';
 import { emailIsValid, passwordIsValid } from '../utils/functions/formChecks';
+import Header from '../components/Header';
+import '../utils/style/signup.css';
 
 function Signup() {
   const {
@@ -13,12 +15,17 @@ function Signup() {
     setName,
     role,
     setRole,
+    setOption,
   } = useContext(AppContext);
   const [secPassword, setSecPassword] = useState('');
   const [isDisabled, setIsDisabled] = useState(true);
   const [isHidden, setIsHidden] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
   const history = useHistory();
+
+  useEffect(() => {
+    setOption('HOME');
+  }, []);
 
   useEffect(() => {
     const checkInputs = () => {
@@ -46,62 +53,75 @@ function Signup() {
   };
 
   return (
-    <div>
-      <img src="" alt="Logo" />
+    <div className="main">
+      <Header />
       <p hidden={ isHidden }>{errorMessage}</p>
-      <form>
-        <label htmlFor="name">
-          Nome
-          <input
-            id="name"
-            name="name"
-            type="text"
-            onChange={ ({ target }) => setName(target.value) }
-          />
-        </label>
-        <label htmlFor="email">
-          E-mail
-          <input
-            id="email"
-            name="email"
-            type="email"
-            placeholder="E-mail"
-            onChange={ ({ target }) => setEmail(target.value) }
-          />
-        </label>
-        <label htmlFor="password">
-          Senha
-          <input
-            id="password"
-            name="password"
-            type="password"
-            placeholder="Senha"
-            onChange={ ({ target }) => setPassword(target.value) }
-          />
-        </label>
-        <label htmlFor="repeat-password">
-          Repetir senha
-          <input
-            id="repeat-password"
-            name="repeat-password"
-            type="password"
-            placeholder="Repetir senha"
-            onChange={ ({ target }) => setSecPassword(target.value) }
-          />
-        </label>
-        <select onChange={ ({ target }) => setRole(target.value) }>
-          <option>Selecione</option>
-          <option>Quero ser mentorada</option>
-          <option>Quero ser mentora</option>
-        </select>
-        <button
-          disabled={ isDisabled }
-          type="button"
-          onClick={ handleClick }
-        >
-          Cadastrar
-        </button>
-      </form>
+      <div className="secondary">
+        <form className="mb-3 form">
+          <label htmlFor="name" className="form-label">
+            Nome
+            <input
+              className="form-control"
+              id="name"
+              name="name"
+              type="text"
+              onChange={ ({ target }) => setName(target.value) }
+            />
+          </label>
+          <label htmlFor="email" className="form-label">
+            E-mail
+            <input
+              className="form-control"
+              id="email"
+              name="email"
+              type="email"
+              onChange={ ({ target }) => setEmail(target.value) }
+            />
+          </label>
+          <label htmlFor="password" className="form-label">
+            Senha
+            <input
+              className="form-control"
+              id="password"
+              name="password"
+              type="password"
+              onChange={ ({ target }) => setPassword(target.value) }
+            />
+          </label>
+          <label htmlFor="repeat-password" className="form-label">
+            Repetir senha
+            <input
+              className="form-control"
+              id="repeat-password"
+              name="repeat-password"
+              type="password"
+              onChange={ ({ target }) => setSecPassword(target.value) }
+            />
+          </label>
+          <button
+            className="button"
+            disabled={ isDisabled }
+            type="button"
+            onClick={ handleClick }
+          >
+            Cadastrar
+          </button>
+        </form>
+        <div>
+          <button
+            type="button"
+            onClick={ ({ target }) => setRole(target.value) }
+          >
+            Quero ser mentorada
+          </button>
+          <button
+            type="button"
+            onClick={ ({ target }) => setRole(target.value) }
+          >
+            Quero ser mentora
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

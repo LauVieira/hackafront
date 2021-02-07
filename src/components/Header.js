@@ -15,12 +15,12 @@ function Header() {
   };
 
   return (
-    <div>
+    <header className="header">
       <img src="" alt="Logo" />
       <button type="button" onClick={ handleClick }>
         {option}
       </button>
-    </div>
+    </header>
   );
 }
 
