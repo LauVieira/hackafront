@@ -6,6 +6,7 @@ const AppProvider = ({ children }) => {
   const [option, setOption] = useState('');
   const [token, setToken] = useState('');
   const [user, setUser] = useState({});
+
   const header = { headers: { Authorization: `Bearer ${token}` } };
 
   const context = {
