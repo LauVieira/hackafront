@@ -17,6 +17,7 @@
     "quotes": ["error", "single"],
     "semi": ["error", "always"],
     "class-methods-use-this": ["off"],
+    "no-use-before-define": ["off"],
     "no-underscore-dangle": [
       "error", 
       {

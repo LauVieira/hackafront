@@ -1,40 +1,47 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 import { AppContext } from '../contexts/Provider';
 import Header from '../components/Header';
-import { emailIsValid, passwordIsValid } from '../utils/functions/formChecks';
 import styled from 'styled-components';
 
 function Login() {
-  const { email, password, setEmail, setPassword, setOption } = useContext(AppContext);
-  const [isDisabled, setIsDisabled] = useState(true);
+  const { setOption, setUser, setToken } = useContext(AppContext);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [clicked, setClicked] = useState(false);
   const history = useHistory();
 
   useEffect(() => {
     setOption('HOME');
   }, []);
 
-  useEffect(() => {
-    const inputValidation = () => {
-      const emailValidation = emailIsValid(email);
-      const passwordValidation = passwordIsValid(password);
+  function submitForm(event) {
+    event.preventDefault();
+    setClicked(true);
+    proceedSubmiting();
+  }
 
-      if (emailValidation && passwordValidation) {
-        setIsDisabled(false);
-      } else {
-        setIsDisabled(true);
-      }
-    };
-    inputValidation();
-  }, [email, password]);
+  function proceedSubmiting() {
+    const request = axios.post('http://localhost:3000/user/sign-in', { email, password });
+    request.then( (res) => submitSucceeded(res.data));
+    request.catch( (err) => submitFailed(err));
+  }
 
-  const handleSubmit = () => {
-    // validar o email cadastrado no banco de dados e retornar mensagem de
-    // usuário inválido se não houver
-    // se houver, pegar o id do usuário e checar se já tem perfil preenchido
-    // se já tiver, o history.push vai pra home
-    history.push('/perfil');
-  };
+  function submitSucceeded(responseData) {
+    setUser({...responseData.user});
+    setToken(responseData.token);
+
+    const { profileFilled } = responseData.user;
+    const pushToProfile = Object.keys(profileFilled).length === 0;
+
+    if (pushToProfile) history.push('/perfil');
+    history.push('/home')
+  }
+
+  function submitFailed(error) {
+    setClicked(false);
+  }
 
   return (
     <Main>
@@ -60,7 +67,7 @@ function Login() {
             </Button>
           </AlignmentDiv>
         </section>
-        <Form className="mb-3 form">
+        <Form className="mb-3 form" onSubmit={ submitForm }>
           <label htmlFor="email" className="form-label">
             <p>Insira o seu e-mail</p>
             <input
@@ -70,6 +77,7 @@ function Login() {
               type="email"
               value={ email }
               onChange={ ({ target }) => setEmail(target.value) }
+              required
             />
           </label>
           <label htmlFor="password" className="form-label">
@@ -81,14 +89,13 @@ function Login() {
               type="password"
               value={ password }
               onChange={ ({ target }) => setPassword(target.value) }
+              required
             />
           </label>
           <ButtonContainer>
             <Button
               className="button"
-              disabled={ isDisabled }
-              type="button"
-              onClick={ handleSubmit }
+              disabled={ clicked }
             >
               Entrar
             </Button>
@@ -179,9 +186,10 @@ const Form = styled.form`
 
   input {
     background-color: #FFFFFF;
+    border-radius: 5px;
+    color: #000;
     padding: 10px;
     margin: 5px 0 10px 0;
-    border-radius: 5px;
     width: 100%;
   }
 `;
