@@ -35,6 +35,8 @@ const StyledHeader = styled.header`
   position: relative;
   top: 0px;
   width: 100%;
+  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
 
   img {
     width: 15%;

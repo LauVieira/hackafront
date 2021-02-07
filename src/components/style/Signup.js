@@ -3,6 +3,8 @@ import styled from 'styled-components';
 export const Main = styled.main`
   background-color: #A67777;
   height: 100vh;
+  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
 
   h3 {
     color: #F2BDC1;
