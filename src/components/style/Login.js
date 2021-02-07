@@ -54,7 +54,7 @@ export const ButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 15%;
-`; 
+`;
 
 export const Button = styled.button`
   background-color: #F2BDC1;
