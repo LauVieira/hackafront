@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {AllCategories} from './style/Categories';
 
 function CategoryButtons() {
 const mockCategories = [
@@ -14,13 +15,15 @@ const mockCategories = [
   'Mobile'];
 
   return (
-    <div>
+    <AllCategories>
       {mockCategories.map((category, index) => (
-        <Link to={`/membros/${index}`}>
-          {category}
-        </Link>
+        <div className={`category-${index}`}>
+          <Link to={`/membros/${index}`}>
+            {category.toUpperCase()}
+          </Link>
+        </div>
       ))}
-    </div>
+    </AllCategories>
   );
 }
 
