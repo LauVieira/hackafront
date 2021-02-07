@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 import { AppContext } from '../contexts/Provider';
-import { emailIsValid } from '../utils/functions/formChecks';
 import {
   Main,
   PhotoSection,
@@ -11,22 +11,22 @@ import {
 } from './style/Profile';
 
 function ProfileForm() {
-  const { user, header } = useContext(AppContext);
+  const { header, user, setUser } = useContext(AppContext);
   const { name, role } = user;
-  const [title, setTitle] = useState('');
-  const [level, setLevel] = useState('');
-  const [website, setWebsite] = useState('');
   const [contactEmail, setContactEmail] = useState('');
-  const [linkedin, setLinkedin] = useState('');
   const [description, setDescription] = useState('');
-  const [topics, setTopics] = useState('');
-  const [photo, setPhoto] = useState('');
-
-  const [isDisabled, setIsDisabled] = useState(true);
+  const [level, setLevel] = useState('');
+  const [linkedin, setLinkedin] = useState('');
   const [message, setMessage] = useState('');
+  const [photo, setPhoto] = useState('');
+  const [title, setTitle] = useState('');
+  const [topics, setTopics] = useState('');
+  const [website, setWebsite] = useState('');
+  const [clicked, setClicked] = useState(false);
   const [isHidden, setIsHidden] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
   const [formIsHidden, setFormIsHidden] = useState(true);
+
   const history = useHistory();
 
   useEffect(() => {
@@ -37,33 +37,43 @@ function ProfileForm() {
     }
   }, []);
 
-  useEffect(() => {
-    const checkInputs = () => {
-      if (name && contactEmail && career && level && description && topics) {
-        setIsDisabled(false);
-      }
-    };
-    checkInputs();
-  }, [name, contactEmail, career, level, description, topics]);
+  function submitForm(event) {
+    event.preventDefault();
+    setClicked(true);
+    proceedSubmiting();
+  }
 
-  const handleClick = () => {
+  function proceedSubmiting() {
+    const formattedObj = formatObj();
+    const request = axios.post('http://localhost:3000/user/profile', formattedObj, header);
+    request.then((res) => submitSucceeded(res.data));
+    request.catch(submitFailed);
+  }
+
+  function submitSucceeded(resData) {
+    user.profileFilled = resData;
+    user.title = title;
+    setUser({ ...user });
+    history.push('/home');
+  }
+
+  function submitFailed() {
     setIsHidden(false);
-    const emailValidation = emailIsValid(contactEmail);
-    if (!emailValidation) {
-      setErrorMessage('E-mail inválido');
-    } else {
-      setIsHidden(true);
-      history.push('/home');
-    }
-  };
+    setErrorMessage('Não foi possível enviar seus dados. Por favor, tente novamente.');
+    setClicked(false);
+  }
 
   const showInput = () => {
-    if (formIsHidden) {
-      setFormIsHidden(false);
-    } else {
-      setFormIsHidden(true);
-    }
+    if (formIsHidden) setFormIsHidden(false);
+    else setFormIsHidden(true);
   };
+
+  function formatObj() {
+    const userData = {
+      userId: user.id, description, level, linkedin, topics, photo, website, contactEmail,
+    };
+    return { userData, title };
+  }
 
   return (
     <Main>
@@ -79,11 +89,12 @@ function ProfileForm() {
               id="img-input"
               type="text"
               onChange={ ({ target }) => setPhoto(target.value) }
+              required
             />
           </label>
         </form>
       </PhotoSection>
-      <Form>
+      <Form onSubmit={ submitForm }>
         <div className="first-part">
           <div className="first-column">
             <label htmlFor="name">
@@ -101,9 +112,10 @@ function ProfileForm() {
               <input
                 id="contact"
                 name="contact"
-                type="text"
+                type="email"
                 onChange={ ({ target }) => setContactEmail(target.value) }
                 value={ contactEmail }
+                required
               />
             </label>
             <label htmlFor="career-field">
@@ -111,9 +123,18 @@ function ProfileForm() {
               <select
                 id="career-field"
                 onChange={ ({ target }) => setTitle(target.value) }
+                required
               >
                 <option>Selecione</option>
-                <option>Dev Front</option>
+                <option value={"Back-End"}>Back-End</option>
+                <option value={"Data Science"}>Data Science</option>
+                <option value={"Front-End"}>Front-End</option>
+                <option value={"Full-Stack"}>Full-Stack</option>
+                <option value={"Games"}>Games</option>
+                <option value={"Mobile"}>Mobile</option>
+                <option value={"Produto"}>Produto</option>
+                <option value={"QA"}>QA</option>
+                <option value={"Ux/Ui"}>Ux/Ui</option>
               </select>
             </label>
             <label htmlFor="linkedin">
@@ -122,7 +143,9 @@ function ProfileForm() {
                 id="linkedin"
                 name="linkedin"
                 type="text"
+                value={ linkedin }
                 onChange={ ({ target }) => setLinkedin(target.value) }
+                required
               />
             </label>
           </div>
@@ -133,6 +156,7 @@ function ProfileForm() {
                 id="level"
                 onChange={ ({ target }) => setLevel(target.value) }
                 value={ level }
+                required
               >
                 <option>Selecione</option>
                 <option value="Júnior">Júnior</option>
@@ -146,7 +170,9 @@ function ProfileForm() {
                 id="web-link"
                 name="web-link"
                 type="text"
+                value={ website }
                 onChange={ ({ target }) => setWebsite(target.value) }
+                required
               />
             </label>
           </div>
@@ -160,6 +186,7 @@ function ProfileForm() {
               maxLength="2500"
               onChange={ ({ target }) => setDescription(target.value) }
               value={ description }
+              required
             />
           </label>
           <label htmlFor="interest">
@@ -170,14 +197,11 @@ function ProfileForm() {
               maxLength="1000"
               onChange={ ({ target }) => setTopics(target.value) }
               value={ topics }
+              required
             />
           </label>
           <div className="button-container">
-            <Button
-              disabled={ isDisabled }
-              type="button"
-              onClick={ handleClick }
-            >
+            <Button disabled={ clicked }>
               Salvar
             </Button>
           </div>
