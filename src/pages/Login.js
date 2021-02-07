@@ -29,7 +29,7 @@ function Login() {
   }
 
   function proceedSubmiting() {
-    const request = axios.post('http://localhost:3000/user/sign-in', { email, password });
+    const request = axios.post('https://egregora-back.herokuapp.com/user/sign-in', { email, password });
     request.then( (res) => submitSucceeded(res.data));
     request.catch( (err) => submitFailed(err));
   }

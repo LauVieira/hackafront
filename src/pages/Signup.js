@@ -37,7 +37,7 @@ function Signup() {
   }
 
   function proceedSubmiting() {
-    const request = axios.post('http://localhost:3000/user/sign-up', { name, email, password, passwordConfirmation, role });
+    const request = axios.post('https://egregora-back.herokuapp.com/user/sign-up', { name, email, password, passwordConfirmation, role });
     request.then(submitSucceeded);
     request.catch(submitFailed);
   }

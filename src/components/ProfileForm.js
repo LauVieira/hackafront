@@ -45,7 +45,7 @@ function ProfileForm() {
 
   function proceedSubmiting() {
     const formattedObj = formatObj();
-    const request = axios.post('http://localhost:3000/user/profile', formattedObj, header);
+    const request = axios.post('https://egregora-back.herokuapp.com/user/profile', formattedObj, header);
     request.then((res) => submitSucceeded(res.data));
     request.catch(submitFailed);
   }
@@ -54,7 +54,7 @@ function ProfileForm() {
     user.profileFilled = resData;
     user.title = title;
     setUser({ ...user });
-    history.push('/home');
+    history.push('/categorias');
   }
 
   function submitFailed() {
