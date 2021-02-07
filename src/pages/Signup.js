@@ -1,9 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import styled from 'styled-components';
 import { AppContext } from '../contexts/Provider';
 import { emailIsValid, passwordIsValid } from '../utils/functions/formChecks';
 import Header from '../components/Header';
+import {
+  Main,
+  RoleCheck,
+  Button,
+  ButtonRight,
+  Form } from '../components/style/Signup';
 
 function Signup() {
   const {
@@ -131,82 +136,3 @@ function Signup() {
 }
 
 export default Signup;
-
-const Main = styled.main`
-  background-color: #A67777;
-  height: 100vh;
-
-  h3 {
-    color: #F2BDC1;
-    font-size: 1.5em;
-    font-weight: 700;
-    margin-bottom: 2em;
-  }
-
-  .secondary {
-    align-items: center;
-    display: flex;
-    justify-content: space-around;
-    margin-top: 5%;
-    width: 100%;
-  }
-`;
-
-const RoleCheck = styled.div`
-  align-self: flex-start;
-  justify-content: center;
-  color: #FFFFFF;
-  width: 30%;
-  display: flex;
-  flex-direction: column;
-
-  p {
-    font-size: 1.5em;
-    margin-bottom: 2em;
-  }
-
-  .btn-container {
-    display: flex;
-    justify-self: flex-start;
-  }
-`;
-
-const Button = styled.button`
-  background-color: #F2BDC1;
-  border-radius: 5px;
-  color: #FFFFFF;
-  display: flex;
-  justify-content: center;
-  padding: 10px;
-  width: 200px;
-
-  &:disabled {
-    opacity: 0.6;
-  }
-`;
-
-const ButtonRight = styled.button`
-  background-color: #FFF;
-  border-radius: 5px;
-  color: #000;
-  display: flex;
-  justify-content: center;
-  margin-right: 1em;
-  padding: 10px;
-  width: 200px;
-`;
-
-const Form = styled.form`
-  color: #FFFFFF;
-  display: flex;
-  flex-direction: column;
-  width: 40vw;
-
-  input {
-    background-color: #FFFFFF;
-    padding: 10px;
-    margin: 5px 0 20px 0;
-    border-radius: 5px;
-    width: 100%;
-  }
-`;

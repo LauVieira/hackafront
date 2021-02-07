@@ -17,7 +17,7 @@ function Header() {
 
   return (
     <StyledHeader>
-      <img src="" alt="Logo" />
+      <img src="/images/egregora-logo.png" alt="Logo" />
       <button type="button" onClick={ handleClick }>
         {option}
       </button>
@@ -30,9 +30,13 @@ export default Header;
 const StyledHeader = styled.header`
   background-color: #FFFFFF;
   display: flex;
+  padding: 0 3%;
   justify-content: space-between;
-  padding: 5%;
   position: relative;
   top: 0px;
   width: 100%;
+
+  img {
+    width: 15%;
+  }
 `;

@@ -3,7 +3,12 @@ import { Link, useHistory } from 'react-router-dom';
 import { AppContext } from '../contexts/Provider';
 import Header from '../components/Header';
 import { emailIsValid, passwordIsValid } from '../utils/functions/formChecks';
-import styled from 'styled-components';
+import {
+  Main,
+  AlignmentDiv,
+  ButtonContainer,
+  Button,
+  Form } from '../components/style/Login';
 
 function Login() {
   const { email, password, setEmail, setPassword, setOption } = useContext(AppContext);
@@ -100,88 +105,3 @@ function Login() {
 }
 
 export default Login;
-
-const Main = styled.main`
-  background-color: #A67777;
-  height: 100vh;
-  font-size: 1.2em;
-
-  .secondary {
-    align-items: flex-start;
-    background-color: #A67777;
-    display: flex;
-    height: 100%;
-    justify-content: space-around;
-    padding-top: 10%;
-    width: 100%;
-  }
-
-  .signup-section {
-    color: #FFFFFF;
-    display: flex;
-    flex-direction: column;
-    line-height: 1.5em;
-    width: 50%;
-  }
-
-  .greeting {
-    color: #F2BDC1;
-    font-size: 1.5em;
-    font-weight: 700;
-    margin-bottom: 2em;
-  }
-
-  .end-text {
-    align-self: flex-end;
-  }
-
-`;
-
-const AlignmentDiv = styled.div`
-  display: flex;
-  align-items: flex-end;
-  flex-direction: column;
-  width: 100%;
-
-  p {
-    margin: 12% 0 10px 0;
-    text-align: right;
-    width: 100%;
-  }
-`;
-
-const ButtonContainer = styled.div`
-  align-items: flex-end;
-  display: flex;
-  flex-direction: column;
-  margin-top: 15%;
-`; 
-
-const Button = styled.button`
-  background-color: #F2BDC1;
-  border-radius: 5px;
-  color: #FFFFFF;
-  display: flex;
-  justify-content: center;
-  padding: 10px;
-  width: 200px;
-
-  &:disabled {
-    opacity: 0.6;
-  }
-`;
-
-const Form = styled.form`
-  color: #FFFFFF;
-  display: flex;
-  flex-direction: column;
-  width: 30%;
-
-  input {
-    background-color: #FFFFFF;
-    padding: 10px;
-    margin: 5px 0 10px 0;
-    border-radius: 5px;
-    width: 100%;
-  }
-`;

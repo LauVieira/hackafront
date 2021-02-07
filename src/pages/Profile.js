@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
+import { AppContext } from '../contexts/Provider';
 import ProfileForm from '../components/ProfileForm';
+import Header from '../components/Header';
 
 function Profile() {
+  const { setOption } = useContext(AppContext);
+
+  useEffect(() => {
+    setOption('HOME');
+  }, []);
+
   return (
     <div>
-      <img src="/images/egregora-logo.png" alt="Logo" />
-      <header>
-        <h1>
-          Preencha seu perfil para começar!
-        </h1>
-      </header>
-      <img src="" alt="Profile" />
+      <Header />
       <ProfileForm />
     </div>
   );
