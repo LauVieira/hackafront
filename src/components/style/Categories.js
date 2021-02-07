@@ -5,11 +5,12 @@ export const Main = styled.main`
   height: 100vh;
   font-size: 1.2em;
   padding-top: 10%;
+  font-weight: 700;
+  font-family: 'Roboto', sans-serif;
 
   h3 {
     font-size: 1.5em;
     color: #A67777;
-    font-weight: bold;
     margin-bottom: 5%;
   }
 `;
