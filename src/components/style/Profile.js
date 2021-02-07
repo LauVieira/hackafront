@@ -8,6 +8,8 @@ export const Main = styled.main`
   padding: 8%;
   font-size: 1.2em;
   color: #FFFFFF;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
 
   h3 {
     color: #F2BDC1;
