@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import styled from 'styled-components';
 import { AppContext } from '../contexts/Provider';
-import '../utils/style/profile.css';
 
 function Header() {
   const { option } = useContext(AppContext);
@@ -16,13 +16,23 @@ function Header() {
   };
 
   return (
-    <header className="header">
+    <StyledHeader>
       <img src="" alt="Logo" />
       <button type="button" onClick={ handleClick }>
         {option}
       </button>
-    </header>
+    </StyledHeader>
   );
 }
 
 export default Header;
+
+const StyledHeader = styled.header`
+  background-color: #FFFFFF;
+  display: flex;
+  justify-content: space-between;
+  padding: 5%;
+  position: relative;
+  top: 0px;
+  width: 100%;
+`;

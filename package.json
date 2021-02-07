@@ -20,7 +20,7 @@
     "@babel/preset-env": "^7.12.13",
     "@babel/preset-react": "^7.12.13",
     "axios": "^0.21.1",
-    "bootstrap": "^5.0.0-beta1",
+    "babel-loader": "^8.2.2",
     "eslint-config-airbnb": "^18.2.1",
     "react": "^17.0.1",
     "react-debounce-input": "^3.2.3",
@@ -30,7 +30,9 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.2",
     "styled-components": "^5.2.1",
-    "webpack-cli": "^4.5.0"
+    "webpack": "^5.21.1",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2"
   },
   "devDependencies": {
     "eslint": "^7.19.0",
