@@ -16,6 +16,7 @@ const AppProvider = ({ children }) => {
   const [description, setDescription] = useState('');
   const [topics, setTopics] = useState('');
   const [photo, setPhoto] = useState('');
+  const [users, setUsers] = useState([]);
 
   const context = {
     name,
@@ -44,6 +45,8 @@ const AppProvider = ({ children }) => {
     setTopics,
     photo,
     setPhoto,
+    users,
+    setUsers,
   };
 
   return (
