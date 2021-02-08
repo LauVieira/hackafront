@@ -1,9 +1,8 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { AppContext } from '../contexts/Provider';
 import Header from '../components/Header';
-import { data } from '../utils/data';
 import { Main, CardContainer } from '../components/style/Members';
 
 function Members() {
@@ -23,7 +22,7 @@ function Members() {
 
   const rendersCards = (user, index) => {
     const { userDatum, name } = user;
-    const { photo, id } = userDatum;
+    const { photo, userId } = userDatum;
     return (
       <div key={ `user-${index}` }>
         <img src={ photo } alt={ name } />
@@ -31,7 +30,7 @@ function Members() {
         <h4>title: Front-End</h4>
         <button
           type="button"
-          onClick={ () => history.push(`/perfil/${id}`) }
+          onClick={ () => history.push(`/perfil/${userId}`) }
         >
           Acesse a minibio
         </button>
