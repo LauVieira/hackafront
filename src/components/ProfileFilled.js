@@ -1,16 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { AppContext } from '../contexts/Provider';
-import { emailIsValid } from '../utils/functions/formChecks';
 import {data} from '../utils/data';
 import {
   Main,
   PhotoSection,
   Button,
-  Form,
-  Final } from './style/Profile';
+  Data,
+  Final } from './style/UserProfile';
 
-function ProfileForm() {
+function ProfileFilled() {
   const {
     name,
     contactEmail,
@@ -46,17 +45,17 @@ function ProfileForm() {
         <h3>Perfil</h3>
         <img src={ photo } alt="profile" />
       </PhotoSection>
-      <Form>
+      <Data>
         <div className="first-part">
           <div className="first-column">
             <h4>Nome</h4>
             <h5>{ name }</h5>
             <h4>E-mail preferível para contato</h4>
             <h5>{ contactEmail }</h5>
-            <h5>Área de atuação</h5>
-            <h4>{career}</h4>
-            <h5>Linkedin</h5>
-            <h4>{linkedin}</h4>
+            <h4>Área de atuação</h4>
+            <h5>{career}</h5>
+            <h4>Linkedin</h4>
+            <h5>{linkedin}</h5>
           </div>
           <div className="second-column">
             <h4>Nível</h4>
@@ -77,9 +76,9 @@ function ProfileForm() {
             Voltar
           </Button>
         </Final>
-      </Form>
+      </Data>
     </Main>
   );
 }
 
-export default ProfileForm;
+export default ProfileFilled;
