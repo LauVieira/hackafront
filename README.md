@@ -17,9 +17,8 @@ Você, mulher da área tech , já se sentiu insegura com seus primeiros passos n
 
 ✅  React;
 
-## Deploy
+## Deploy(via heroku)
 
-- via heroku
 ✅  https://egregora-tech.herokuapp.com/
 
 *Alerta: pode demorar um pouco pra acessar o banco de dados;
