@@ -38,9 +38,10 @@ function Login() {
     setUser({...responseData.user});
     setToken(responseData.token);
     const { profileFilled } = responseData.user;
+    if (profileFilled === null) return history.push('/perfil');
+
     const profileIsFilled = Object.keys(profileFilled).length;
     if (profileIsFilled) return history.push('/categorias');
-
     history.push('/perfil');
   }
 
