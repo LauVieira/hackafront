@@ -1,26 +1,25 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { AllCategories } from './style/Categories';
+import { AppContext } from '../contexts/Provider';
 
-function CategoryButtons() {
-  const mockCategories = [
-    'Front-End',
-    'Back-End',
-    'Full-Stack',
-    'Ux/Ui',
-    'Produto',
-    'Data Science',
-    'QA',
-    'Games',
-    'Mobile'];
+function CategoryButtons(props) {
+  const { categories } = props;
+  const { setCategory } = useContext(AppContext);
+  const history = useHistory();
+
+  function redirect(category) {
+    setCategory(category.title);
+    history.push(`/membros/${category.id}`);
+  }
 
   return (
     <AllCategories>
-      {mockCategories.map((category, index) => (
-        <div className={ `category-${index}` }>
-          <Link to={ `/membros/${index}` }>
-            {category.toUpperCase()}
-          </Link>
+      {categories.map((category) => (
+        <div key={ category.id } className={ `category-${category.id}` }>
+          <button onClick={ () => redirect(category) }>
+            {category.title}
+          </button>
         </div>
       ))}
     </AllCategories>

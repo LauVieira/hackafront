@@ -7,24 +7,26 @@ import {
   PhotoSection,
   Button,
   Data,
-  Final } from './style/UserProfile';
+  Final,
+} from './style/UserProfile';
 
-function ProfileFilled() {
+function ProfileFilled(props) {
+  const { chosenUser } = props;
+  const { category } = useContext(AppContext);
+  const { name, role, userDatum } = chosenUser;
   const {
-    name,
     contactEmail,
-    career,
     level,
     description,
     topics,
-    role,
     photo,
     linkedin,
     website,
-    fetchUserData,
-  } = useContext(AppContext);
+  } = userDatum;
   const [message, setMessage] = useState('');
   const history = useHistory();
+
+  console.log(category);
 
   useEffect(() => {
     if (role === 'mentor') {
@@ -32,10 +34,6 @@ function ProfileFilled() {
     } else {
       setMessage('Quer mentoria sobre');
     }
-  }, []);
-
-  useEffect(() => {
-    fetchUserData(data[0]);
   }, []);
 
   return (
@@ -52,7 +50,7 @@ function ProfileFilled() {
             <h4>E-mail para contato</h4>
             <h5>{ contactEmail }</h5>
             <h4>Área de atuação</h4>
-            <h5>{career}</h5>
+            <h5>{category}</h5>
             <h4>Linkedin</h4>
             <h5>{linkedin}</h5>
           </div>
