@@ -1,5 +1,3 @@
-/* eslint-disable no-magic-numbers */
-
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { AppContext } from '../contexts/Provider';

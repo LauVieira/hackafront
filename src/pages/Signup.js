@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import styled from 'styled-components';
 import axios from 'axios';
 import { AppContext } from '../contexts/Provider';
 import { emailIsValid, passwordIsValid } from '../utils/functions/formChecks';

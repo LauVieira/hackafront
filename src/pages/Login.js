@@ -37,9 +37,9 @@ function Login() {
   function submitSucceeded(responseData) {
     setUser({...responseData.user});
     setToken(responseData.token);
-
     const { profileFilled } = responseData.user;
-    if (!(profileFilled.length)) history.push('/home');
+    const profileIsFilled = Object.keys(profileFilled).length;
+    if (profileIsFilled) return history.push('/categorias');
 
     history.push('/perfil');
   }
