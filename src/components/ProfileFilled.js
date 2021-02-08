@@ -50,7 +50,7 @@ function ProfileFilled() {
           <div className="first-column">
             <h4>Nome</h4>
             <h5>{ name }</h5>
-            <h4>E-mail preferível para contato</h4>
+            <h4>E-mail para contato</h4>
             <h5>{ contactEmail }</h5>
             <h4>Área de atuação</h4>
             <h5>{career}</h5>
