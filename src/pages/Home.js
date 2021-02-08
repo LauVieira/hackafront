@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from '../components/Header';
 import styled from 'styled-components';
+import Header from '../components/Header';
 
 function Home() {
   return (
@@ -20,7 +20,7 @@ function Home() {
           <h2>Conecte-se com especialistas para esclarecer suas dúvidas</h2>
         </Title>
         <FirstPart>
-          <div>
+          <div className="side-text">
             <p>
               Sabemos as dificuldades que mulheres enfrentam no
               mercado de tecnologia e o quão difícil pode ser
@@ -33,10 +33,10 @@ function Home() {
               com você sobre o seu momento profissional.
             </p>
           </div>
-          <div>
+          <div className="picture-button">
             <img src="/images/women.png" alt="mulheres diversas" />
             <button
-              onClick={() => history.push('/login')}
+              onClick={ () => history.push('/login') }
             >
               Quero agendar uma mentoria
             </button>
@@ -44,7 +44,7 @@ function Home() {
           <div>
             <img src="/images/image 9.png" alt="gráfico de atributos" />
             <button
-              onClick={() => history.push('/login')}
+              onClick={ () => history.push('/login') }
             >
               Quero ser uma mentora
             </button>
@@ -57,8 +57,8 @@ function Home() {
           </p>
           <h3><strong>AQUI VOCÊ DESENVOLVE SUA LIDERANÇA</strong></h3>
           <p>
-            Essa também é uma oportunidade para você desenvolver 
-            suas habilidades comportamentais e dar um passo 
+            Essa também é uma oportunidade para você desenvolver
+            suas habilidades comportamentais e dar um passo
             em sua carreira.
           </p>
         </div>
@@ -133,4 +133,7 @@ export const FirstPart = styled.div`
   display: flex;
   margin-top: 10%;
 
+  .side-text {
+
+  }
 `;

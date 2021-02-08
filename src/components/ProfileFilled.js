@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { AppContext } from '../contexts/Provider';
-import {data} from '../utils/data';
+import { data } from '../utils/data';
 import {
   Main,
   PhotoSection,
@@ -38,7 +38,6 @@ function ProfileFilled() {
     fetchUserData(data[0]);
   }, []);
 
-
   return (
     <Main>
       <PhotoSection>
@@ -71,7 +70,7 @@ function ProfileFilled() {
           <h5>{ topics }</h5>
           <Button
             type="button"
-            onClick={() => history.push('/categorias')}
+            onClick={ () => history.push('/categorias') }
           >
             Voltar
           </Button>

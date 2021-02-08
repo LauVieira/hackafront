@@ -19,7 +19,7 @@ const AppProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
 
   const fetchUserData = (user) => {
-    const {userDatum} = user;
+    const { userDatum } = user;
     setName(user.name);
     setContactEmail(userDatum.contactEmail);
     setCareer('Front-End');
@@ -30,7 +30,7 @@ const AppProvider = ({ children }) => {
     setPhoto(userDatum.photo);
     setLinkedin(userDatum.linkedin);
     setWebsite(userDatum.website);
-  }
+  };
 
   const context = {
     name,
