@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Main = styled.main`
   background-color: #A67777;
-  height: 100%;
+  min-height: 100vh;
   font-size: 1.2em;
   font-weight: 400;
   font-family: 'Roboto', sans-serif;

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { AppContext } from '../contexts/Provider';
@@ -9,6 +9,7 @@ function Members() {
   const { users, setUsers, setOption, header } = useContext(AppContext);
   const history = useHistory();
   const categodyId = useParams().id;
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setOption('HOME');
@@ -17,7 +18,10 @@ function Members() {
 
   function getMembers() {
     const request = axios.get(`https://egregora-back.herokuapp.com/career/${categodyId}/users`, header);
-    request.then((res) => setUsers([...res.data]));
+    request.then((res) => {
+      setUsers([...res.data]);
+      setLoading(false);
+    });
   }
 
   const rendersCards = (user, index) => {
@@ -39,6 +43,7 @@ function Members() {
   };
 
   if (users.length === 0) {
+    if (loading === false) return (<h1>Ainda não há ninguém nessa categoria</h1>);
     return (
       <h1>Carregando...</h1>
     );
