@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { AppContext } from '../contexts/Provider';
-import {data} from '../utils/data';
+import { data } from '../utils/data';
 import {
   Main,
   PhotoSection,
