@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Main = styled.main`
   background-color: #A67777;
-  height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   padding: 8%;
