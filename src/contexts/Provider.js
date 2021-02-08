@@ -18,6 +18,20 @@ const AppProvider = ({ children }) => {
   const [photo, setPhoto] = useState('');
   const [users, setUsers] = useState([]);
 
+  const fetchUserData = (user) => {
+    const {userDatum} = user;
+    setName(user.name);
+    setContactEmail(userDatum.contactEmail);
+    setCareer('Front-End');
+    setLevel(userDatum.level);
+    setDescription(userDatum.description);
+    setTopics(userDatum.topics);
+    setRole(user.role);
+    setPhoto(userDatum.photo);
+    setLinkedin(userDatum.linkedin);
+    setWebsite(userDatum.website);
+  }
+
   const context = {
     name,
     setName,
@@ -47,6 +61,7 @@ const AppProvider = ({ children }) => {
     setPhoto,
     users,
     setUsers,
+    fetchUserData,
   };
 
   return (
