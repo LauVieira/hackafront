@@ -5,16 +5,21 @@ Você, mulher da área tech , já se sentiu insegura com seus primeiros passos n
 
 ## Features
 ✅ Fazer cadastro; 
+
 ✅ Criar perfil (mentora ou mentorada);
+
 ✅ Fazer buscas por perfil de atuação  (frontend, backend, ...);
 
 ## Aplicação web
 ✅ Layout para desktop;
 
-##Framework
+## Framework
+
 ✅ React;
 
-##Deploy
+## Deploy
+
 - via heroku
 ✅  https://egregora-tech.herokuapp.com/
-⚠️ Alerta: pode demorar um pouco pra acessar o banco de dados;
+
+* *Alerta: pode demorar um pouco pra acessar o banco de dados;
